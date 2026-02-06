@@ -12,6 +12,10 @@ interface CompanionSessionPageProps {
 const CompanionSession = async ({params}: CompanionSessionPageProps) => {
     const {id} = await params;
     const companion = await getCompanion(id);
+
+    if (!companion) {
+        redirect('/companions');
+    }
     const user = await currentUser();
 
     const {name, subject, title, topic, duration} = companion;
@@ -23,7 +27,7 @@ const CompanionSession = async ({params}: CompanionSessionPageProps) => {
         <main>
             <article className="flex rounded-border justify-between p-6 max-md:flex-col">
                 <div className="flex items-center gap-2">
-                    <div className="size-18 flex items-center justify-center rounded-lg max-md:hidden"
+                    <div className="size-[72px] flex items-center justify-center rounded-lg max-md:hidden"
                          style={{backgroundColor: getSubjectColor(subject)}}>
                         <Image src={`/icons/${subject}.svg`} alt={subject} width={35} height={35}/>
                     </div>
