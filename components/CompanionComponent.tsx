@@ -77,7 +77,7 @@ const CompanionComponent = ({
             vapi.off('speech-start', onSpeechStart);
             vapi.off('speech-end', onSpeechEnd);
         }
-    }, []);
+    }, [companionId]);
 
     const toggleMicrophone = () => {
         const isMuted = vapi.isMuted();
@@ -94,8 +94,8 @@ const CompanionComponent = ({
             serverMessages: [],
         }
 
-        // @ts-expect-error
-        await vapi.start(configureAssistant(voice, style), assistantOverrides)
+        // @ts-expect-error - remove error
+        vapi.start(configureAssistant(voice, style), assistantOverrides)
     }
 
     const handleDisconnect = () => {
