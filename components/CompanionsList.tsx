@@ -30,6 +30,19 @@ const CompanionsList = ({title, companions, classNames}: CompanionsListProps) =>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
+                    {(() => {
+                        if (!companions) return null;
+
+                        const ids = companions.map(c => c.id);
+                        const unique = new Set(ids);
+
+                        console.log('companions length:', ids.length);
+                        console.log('unique ids:', unique.size);
+                        console.log('duplicates:', ids.filter((id, i) => ids.indexOf(id) !== i));
+
+                        return null;
+                    })()}
+                    
                     {companions?.map(({id, subject, name, topic, duration}) => (
                         <TableRow key={id}>
                             <TableCell>

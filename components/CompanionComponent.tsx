@@ -95,7 +95,7 @@ const CompanionComponent = ({
         }
 
         // @ts-expect-error
-        vapi.start(configureAssistant(voice, style), assistantOverrides)
+        await vapi.start(configureAssistant(voice, style), assistantOverrides)
     }
 
     const handleDisconnect = () => {
